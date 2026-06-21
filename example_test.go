@@ -3,7 +3,7 @@ package epub_test
 import (
 	"fmt"
 
-	"github.com/writingtoole/epub"
+	"github.com/behringer24/epub"
 )
 
 func ExampleNew() {
