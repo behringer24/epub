@@ -188,7 +188,7 @@ func (e *EPub) SetUUID(uu string) error {
 		return err
 	}
 	e.uuid = "urn:uuid:" + u.String()
-	err = "uuid can not be set"
+	err = errors.New("uuid can not be set")
 	for i, m := range e.metadata {
 		if m.kind == "dc:identifier" {
 			err = nil
