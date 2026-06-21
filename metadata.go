@@ -139,6 +139,38 @@ func (e *EPub) AddSubject(subj string) {
 	e.addDcItem("subject", subj)
 }
 
+// AddDate adds a publication date for the book. The value should
+// follow the W3CDTF subset of ISO 8601 (e.g. "2024-01-15").
+func (e *EPub) AddDate(date string) {
+	e.addDcItem("date", date)
+}
+
+// AddRights adds a rights statement for the book, such as a copyright
+// notice or license description.
+func (e *EPub) AddRights(rights string) {
+	e.addDcItem("rights", rights)
+}
+
+// AddSource adds a source identifier for the book, typically the ISBN
+// or other identifier of the physical work this digital edition is
+// derived from.
+func (e *EPub) AddSource(source string) {
+	e.addDcItem("source", source)
+}
+
+// AddRelation adds a relation entry describing a related resource,
+// such as a companion volume or another edition of the same work.
+func (e *EPub) AddRelation(relation string) {
+	e.addDcItem("relation", relation)
+}
+
+// AddType adds a DCMI type for the book. Common values include
+// "Text", "Image", "Sound", "Collection" — see
+// https://www.dublincore.org/specifications/dublin-core/dcmi-type-vocabulary/
+func (e *EPub) AddType(dctype string) {
+	e.addDcItem("type", dctype)
+}
+
 func (e *EPub) addDcItem(i, v string) {
 	m := metadata{kind: "dc:" + i, value: v}
 

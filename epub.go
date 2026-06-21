@@ -10,7 +10,7 @@
 // ePub validators such as ePubCheck
 // (https://github.com/IDPF/epubcheck) is advisable.
 //
-// Structure notes
+// # Structure notes
 //
 // All files in an ePub should be reachable, directly or indirectly,
 // from the spine of the book. Books with unreferenced files are
@@ -24,7 +24,7 @@
 // ePub files are specially formatted zip archives. You can unzip the
 // resulting .epub file and inspect the contents if needed.
 //
-// Limitations
+// # Limitations
 //
 // Currently this package doesn't support adding fonts or JavaScript
 // files, nor does it support encrypted or DRM'd books.
@@ -188,14 +188,14 @@ func (e *EPub) SetUUID(uu string) error {
 		return err
 	}
 	e.uuid = "urn:uuid:" + u.String()
-	log.Printf("Setting uuid, theoretically %q", e.uuid)
+	err = errors.New("uuid can not be set")
 	for i, m := range e.metadata {
 		if m.kind == "dc:identifier" {
-			log.Printf("Set id to %q", e.uuid)
+			err = nil
 			e.metadata[i].value = e.uuid
 		}
 	}
-	return nil
+	return err
 }
 
 func (e *EPub) nextId(class string) Id {
